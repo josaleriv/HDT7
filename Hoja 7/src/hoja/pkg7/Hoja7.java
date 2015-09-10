@@ -5,9 +5,8 @@
  */
 package hoja.pkg7;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -18,28 +17,38 @@ public class Hoja7 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
         // TODO code application logic here
-        File diccionario= new File ("diccionario.txt");
-        /*try{
-            BufferedReader br = new BufferedReader(new FileReader(diccionario));
-                try { //array de tipo numeral que implementa comparable
-                    int z=0;
-                    for(String line; (line = br.readLine()) != null; ){
-                        selectionArray[z] = new ObjetoNumerales(Integer.parseInt(line));
-                        insertionArray[z] = new ObjetoNumerales(Integer.parseInt(line));
-                        quickArray[z] = new ObjetoNumerales(Integer.parseInt(line));
-                        radixArray[z] = new ObjetoNumerales(Integer.parseInt(line));
-                        z++;
-                    }
+        File fileDiccionario= new File ("diccionario.txt");
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(fileDiccionario));
+            try { 
+                BinaryTree diccionario= new BinaryTree(null);
+                //BinarySearchTree busqueda = new BinarySearchTree();
+                ArrayList<TreeMap> lista= new ArrayList<TreeMap>();
+                for(String line; (line = br.readLine()) != null; ){
+                    String[] entry;
+                    entry= line.split(",");
+                    entry[0]=entry[0].substring(1);
+                    entry[1]=(String) entry[1].subSequence(1, entry[1].length()-1);
+                    TreeMap<String, String> entrada = new TreeMap();
+                    entrada.put(entry[0], entry[1]);
+                    lista.add(entrada);
+                    System.out. println(entry[0]);
+                    System.out.println(entry[1]);
                 }
-                catch(IOException ex) {
-                        Logger.getLogger(Hoja3.class.getName()).log(Level.SEVERE, null, ex);
+                
+                for (int i=0; i<lista.size(); i++){
+                    System.out.print(lista.get(i)+", ");
                 }
             }
-        catch(FileNotFoundException ex) {
-            Logger.getLogger(Hoja3.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+            catch(Exception e){
+                
+            }
+        }
+        catch(Exception e){
+            
+        }
     }
     
 }

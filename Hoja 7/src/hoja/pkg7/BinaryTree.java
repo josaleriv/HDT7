@@ -5,6 +5,10 @@
  */
 package hoja.pkg7;
 
+/**
+ *
+ * @author Ma. Belen
+ */
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
