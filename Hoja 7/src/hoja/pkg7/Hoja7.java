@@ -22,6 +22,7 @@ public class Hoja7 {
         File fileDiccionario= new File ("diccionario.txt");
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileDiccionario));
+            BufferedReader br2 = new BufferedReader(new FileReader(fileText));
             try { 
                 BinaryTree diccionario= new BinaryTree(null);
                 BinarySearchTree funciones = new BinarySearchTree();
@@ -36,11 +37,18 @@ public class Hoja7 {
                     entrada.put(entry[0], entry[1]);
                     lista.add(entrada);
                 }
+                for(String line2; (line2 = br2.readLine()) != null; ){
+                    System.out. println("Oracion en ingles:\n"+line2);
+                    String[] stringOracion;
+                    stringOracion = line2.split(" ");
+                    for(int y=0; y<stringOracion.length; y++){
+                        System.out.print("*"+stringOracion[y]+"* ");
+                    }
+                }
                 diccionario.setValue(lista.get(0));
                 for (int x=1; x<lista.size(); x++){
                     funciones.insertNode(diccionario, lista.get(x));
                 }
-                
                 funciones.printInOrder(diccionario);
             }
             catch(Exception e){
