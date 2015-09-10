@@ -1,9 +1,10 @@
+package hoja.pkg7;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hoja.pkg7;
 
 import java.util.TreeMap;
 
@@ -32,8 +33,6 @@ public class BinarySearchTree<E> {
         contenido = contenido.substring(1, separador);
         int comparacion;
         comparacion= data.compareTo(contenido);
-        System.out.println(contenido+", "+data);
-        System.out.println("comp: "+comparacion);
         if (contenido== null)
         {
             node = arbol;
@@ -61,13 +60,29 @@ public class BinarySearchTree<E> {
     }
     public void printInOrder(BinaryTree node)
     {
+        String contenido; 
         if (node != null)
         {
+            contenido=node.getValue().toString();
             printInOrder(node.getLeftChild());
-            System.out.print(node.getValue() + " - ");
+            System.out.println(contenido.subSequence(1, contenido.length()-1));
             printInOrder(node.getRightChild());
         }
         
+    }
+    
+    public void busqueda(BinaryTree node)
+    {
+        String contenido; 
+        int separador;
+        if (node != null)
+        {
+            contenido=node.getValue().toString();
+            separador=contenido.indexOf("=");
+            printInOrder(node.getLeftChild());
+            System.out.println(contenido.subSequence(1, separador-1));
+            printInOrder(node.getRightChild());
+        }
     }
     
 }

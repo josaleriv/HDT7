@@ -1,9 +1,10 @@
+package hoja.pkg7;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hoja.pkg7;
 
 import java.io.*;
 import java.util.*;
@@ -20,11 +21,13 @@ public class Hoja7 {
     public static void main(String[] args){
         // TODO code application logic here
         File fileDiccionario= new File ("diccionario.txt");
+        File fileTexto= new File ("texto.txt");
+        BinaryTree diccionario= new BinaryTree(null);
+        BinarySearchTree funciones = new BinarySearchTree();
+        
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileDiccionario));
             try { 
-                BinaryTree diccionario= new BinaryTree(null);
-                BinarySearchTree funciones = new BinarySearchTree();
                 ArrayList<TreeMap> lista= new ArrayList<TreeMap>();
                 for(String line; (line = br.readLine()) != null; ){
                     String[] entry;
@@ -41,7 +44,9 @@ public class Hoja7 {
                     funciones.insertNode(diccionario, lista.get(x));
                 }
                 
+                System.out.println("DICCIONARIO INGLES-ESPANOL\n\nPalabras en el diccionario:\n");
                 funciones.printInOrder(diccionario);
+                System.out.println("\n");
             }
             catch(Exception e){
             }
@@ -49,6 +54,47 @@ public class Hoja7 {
         catch(Exception e){
             
         }
+        /*try{
+            BufferedReader br = new BufferedReader(new FileReader(fileTexto));
+            ArrayList<String> palabras = new ArrayList<String>();
+            ArrayList<String> palabras2 = new ArrayList<String>();
+            String palabra;
+            int size, separador;
+                    
+            try{
+                for(String line; (line = br.readLine()) != null; ){
+                size=line.length();
+                while (size>0){
+                    separador=line.indexOf(" ");
+                    if (separador<0){
+                        if(line.contains(".")){
+                            size=line.length();
+                            line=line.substring(0, size-1);
+                        }
+                        palabras.add(line);
+                        System.out.println(line);
+                        break;
+                    }
+                    palabra= line.substring(0, separador);
+                    palabras.add(palabra);
+                    line=line.substring(separador+1);
+                    System.out.println(palabra);
+                }
+                }
+                funciones.busqueda(diccionario);
+                for (int x=1; x<palabras.size(); x++){
+                    palabra=palabras.get(x);
+                    //System.out.println(palabra);
+                }
+            }
+            catch(Exception e){
+                
+            }
+            
+        }
+        catch(Exception e){
+            
+        }*/
     }
     
 }

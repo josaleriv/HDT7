@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package hoja.pkg7;
-
 /**
  *
  * @author Ma. Belen
