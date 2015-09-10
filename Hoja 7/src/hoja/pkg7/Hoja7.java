@@ -1,5 +1,4 @@
 package hoja.pkg7;
-//COMENTARIO DE COMPROBACION
 
 /*
  * To change this license header, choose License Headers in Project Properties.
