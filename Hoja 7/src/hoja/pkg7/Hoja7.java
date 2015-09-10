@@ -29,27 +29,18 @@ public class Hoja7 {
                 for(String line; (line = br.readLine()) != null; ){
                     String[] entry;
                     entry= line.split(",");
-                    entry[0]=entry[0].substring(1);
+                    entry[0]=entry[0].substring(1).toLowerCase();
                     entry[1]=(String) entry[1].subSequence(1, entry[1].length()-1);
+                    entry[1]=entry[1].toLowerCase();
                     TreeMap<String, String> entrada = new TreeMap();
                     entrada.put(entry[0], entry[1]);
                     lista.add(entrada);
                 }
-               
                 diccionario.setValue(lista.get(0));
-                /*System.out.println(diccionario.getValue());
-                funciones.insertNode(diccionario, lista.get(1));
-                System.out.println(diccionario.getLeftChild().getValue());*/
-                
-                /*funciones.insertNode(diccionario, lista.get(3));
-                //funciones.insertNode(diccionario, lista.get(3));
-                System.out.println(diccionario.getValue());
-               // System.out.println(diccionario.getLeftChild().getValue());
-                System.out.println(diccionario.getRightChild().getValue());*/
-                
                 for (int x=1; x<lista.size(); x++){
                     funciones.insertNode(diccionario, lista.get(x));
                 }
+                
                 funciones.printInOrder(diccionario);
             }
             catch(Exception e){

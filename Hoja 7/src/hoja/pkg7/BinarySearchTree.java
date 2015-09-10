@@ -25,22 +25,31 @@ public class BinarySearchTree<E> {
         String data;
         data=entry.firstKey().toString();
         BinaryTree arbol= new BinaryTree(entry);
-        if (node == null)
+        String contenido;
+        int separador;
+        contenido = node.getValue().toString();
+        separador = contenido.indexOf("=");
+        contenido = contenido.substring(1, separador);
+        int comparacion;
+        comparacion= data.compareTo(contenido);
+        System.out.println(contenido+", "+data);
+        System.out.println("comp: "+comparacion);
+        if (contenido== null)
         {
-            node = new BinaryTree(data);
+            node = arbol;
             ROOT = node;
         }
-        else if ((data.compareTo(node.getValue().toString())<0) && (node.getLeftChild() == null))
+        else if ((comparacion <0) && (node.getLeftChild() == null))
         {
             node.setLeftChild(arbol);
         }
-        else if ((data.compareTo(node.getValue().toString())>=0) && (node.getRightChild() == null))
+        else if ((comparacion>=0) && (node.getRightChild() == null))
         {
             node.setRightChild(arbol);
         }
         else
         {
-            if (data.compareTo(node.getValue().toString())<0)
+            if (comparacion<0)
             {
                 insertNode(node.getLeftChild(), entry);
             }
@@ -52,20 +61,6 @@ public class BinarySearchTree<E> {
     }
     public void printInOrder(BinaryTree node)
     {
-        /*BinaryTree nodoParent,nodoIzq, nodoDer;
-        nodoParent=parent;
-        nodoIzq=node.getLeftChild();
-        nodoDer=node.getRightChild();
-        
-        if(nodoIzq != null){
-            printInOrder(nodoIzq, nodoParent);
-        }
-        else{
-            System.out.println(node.getValue());
-            if(nodoDer !=null){
-                printInOrder(nodoDer, nodoParent);
-            }
-        }*/
         if (node != null)
         {
             printInOrder(node.getLeftChild());
