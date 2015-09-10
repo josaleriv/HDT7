@@ -32,10 +32,9 @@ public class BinarySearchTree<E> {
         }
         else if ((data.compareTo(node.getValue().toString())<0) && (node.getLeftChild() == null))
         {
-            //node.left = new BinaryTree(data);
             node.setLeftChild(arbol);
         }
-        else if ((data.compareTo(node.getValue().toString())<0) && (node.getLeftChild() == null))
+        else if ((data.compareTo(node.getValue().toString())>=0) && (node.getRightChild() == null))
         {
             node.setRightChild(arbol);
         }
@@ -50,6 +49,30 @@ public class BinarySearchTree<E> {
                 insertNode(node.getRightChild(), entry);
             }
         }
+    }
+    public void printInOrder(BinaryTree node)
+    {
+        /*BinaryTree nodoParent,nodoIzq, nodoDer;
+        nodoParent=parent;
+        nodoIzq=node.getLeftChild();
+        nodoDer=node.getRightChild();
+        
+        if(nodoIzq != null){
+            printInOrder(nodoIzq, nodoParent);
+        }
+        else{
+            System.out.println(node.getValue());
+            if(nodoDer !=null){
+                printInOrder(nodoDer, nodoParent);
+            }
+        }*/
+        if (node != null)
+        {
+            printInOrder(node.getLeftChild());
+            System.out.print(node.getValue() + " - ");
+            printInOrder(node.getRightChild());
+        }
+        
     }
     
 }

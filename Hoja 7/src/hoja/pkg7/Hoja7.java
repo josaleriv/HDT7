@@ -24,7 +24,7 @@ public class Hoja7 {
             BufferedReader br = new BufferedReader(new FileReader(fileDiccionario));
             try { 
                 BinaryTree diccionario= new BinaryTree(null);
-                //BinarySearchTree busqueda = new BinarySearchTree();
+                BinarySearchTree funciones = new BinarySearchTree();
                 ArrayList<TreeMap> lista= new ArrayList<TreeMap>();
                 for(String line; (line = br.readLine()) != null; ){
                     String[] entry;
@@ -34,16 +34,25 @@ public class Hoja7 {
                     TreeMap<String, String> entrada = new TreeMap();
                     entrada.put(entry[0], entry[1]);
                     lista.add(entrada);
-                    System.out. println(entry[0]);
-                    System.out.println(entry[1]);
                 }
+               
+                diccionario.setValue(lista.get(0));
+                /*System.out.println(diccionario.getValue());
+                funciones.insertNode(diccionario, lista.get(1));
+                System.out.println(diccionario.getLeftChild().getValue());*/
                 
-                for (int i=0; i<lista.size(); i++){
-                    System.out.print(lista.get(i)+", ");
+                /*funciones.insertNode(diccionario, lista.get(3));
+                //funciones.insertNode(diccionario, lista.get(3));
+                System.out.println(diccionario.getValue());
+               // System.out.println(diccionario.getLeftChild().getValue());
+                System.out.println(diccionario.getRightChild().getValue());*/
+                
+                for (int x=1; x<lista.size(); x++){
+                    funciones.insertNode(diccionario, lista.get(x));
                 }
+                funciones.printInOrder(diccionario);
             }
             catch(Exception e){
-                
             }
         }
         catch(Exception e){
